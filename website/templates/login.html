@@ -1,0 +1,50 @@
+{% extends "base.html" %} 
+
+{% block head %} 
+<link rel="stylesheet" href="{{url_for("static", filename="css/form.css" )}}" />
+<style>
+    .invalid {
+        font-size: 0.75rem;
+        color: red;
+        position: absolute;
+        display: {{ invalid_display}};
+        top: 65%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+{% endblock %} 
+
+{% block body %}
+<form class="form-signin" method="post">
+    <div class="text-center mb-5">
+        <h1 class="h3 mb-3 mt-3 font-weight-normal">BMI Calculating Device</h1>
+        <p>Sign in to view your BMI.</p>
+    </div>
+
+    <div class="form-label-group">
+        <input
+            type="text"
+            id="lrn"
+            name="lrn"
+            class="form-control"
+            placeholder="LRN"
+            required
+        />
+        <label for="lrn">LRN</label>
+    </div>
+
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" value="remember-me" /> Remember me
+        </label>
+    </div>
+    <button class="btn btn-primary btn-lg w-100" type="submit">Sign in</button>
+    <p class="mt-2 text-center invalid">
+        No user found with LRN: <strong>{{lrn}}</strong>
+    </p>
+    <p class="mt-5 mb-3 text-muted text-sm-center">
+        &copy; Felizardo, Garcia, Marfil, Santos, Tagaban
+    </p>
+</form>
+{% endblock %}
